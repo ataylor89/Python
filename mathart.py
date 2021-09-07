@@ -5,7 +5,7 @@ def hexagon(sidelength=100, left=True):
 	if left:
 		for i in range(6):
 			turtle.forward(sidelength)
-			turtle.right(60)
+			turtle.left(60)
 	else:
 		for i in range(6):
 			turtle.forward(sidelength)
@@ -102,5 +102,6 @@ def trianglespiral(sidelength=100, left=True):
 			turtle.right(5)
 
 if len(sys.argv) == 4:
+	turtle.shape('turtle')
 	locals()[sys.argv[1]](int(sys.argv[2]), sys.argv[3] == "left")
 	turtle.done()
