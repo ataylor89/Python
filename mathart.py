@@ -1,6 +1,13 @@
 import sys
 import turtle
 
+def setorigin(x, y):
+	turtle.hideturtle()
+	turtle.penup()
+	turtle.goto(x, y)
+	turtle.pendown()
+	turtle.showturtle()	
+
 def hexagon(sidelength=100, left=True):
 	if left:
 		for i in range(6):
@@ -101,7 +108,11 @@ def trianglespiral(sidelength=100, left=True):
 			triangle(sidelength, left)
 			turtle.right(5)
 
-if len(sys.argv) == 4:
-	turtle.shape('turtle')
+turtle.shape('turtle')
+
+if len(sys.argv) >= 6:
+	setorigin(int(sys.argv[4]), int(sys.argv[5]))
+
+if len(sys.argv) >= 4:
 	locals()[sys.argv[1]](int(sys.argv[2]), sys.argv[3] == "left")
 	turtle.done()
