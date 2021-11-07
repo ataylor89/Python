@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Notebooks</title>
+</head>
+<body>
+    {% if authenticated %}
+    <h1>Welcome {{ username }}</h1>
+    <h2>Your Jupyter notebook token is {{ token }}</h2>
+    <a href="{{ 'http://localhost:8888/?token=%s'%token }}">Open Jupyter Notebook</a>
+    {% else %}
+    <h1>Login to access Jupyter notebooks</h1>
+    <form action="/login" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label>Username:</label>
+                </td>
+                <td>
+                    <input type="text" name="username">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password:</label>
+                </td>
+                <td>
+                    <input type="password" name="password">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Login">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <p id="response_message"></p>
+    <a href="/register_view">Register</a>
+    {% endif %}
+</body>
+</html>
