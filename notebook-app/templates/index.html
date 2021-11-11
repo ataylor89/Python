@@ -5,8 +5,12 @@
 <body>
     {% if authenticated %}
     <h1>Welcome {{ username }}</h1>
+    {% if token %}
     <h2>Your Jupyter notebook token is {{ token }}</h2>
     <a href="{{ 'http://localhost:8888/?token=%s'%token }}">Open Jupyter Notebook</a>
+    {% else %}
+    <a href="/create_notebook">Create notebook</a>
+    {% endif %}
     {% else %}
     <h1>Login to access Jupyter notebooks</h1>
     <form action="/login" method="POST">
