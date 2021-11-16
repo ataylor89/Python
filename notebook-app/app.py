@@ -1,6 +1,7 @@
 from os import path
 import yaml
 from kubernetes import client, config
+from kubernetes.client.api import core_v1_api
 from flask import Flask, request, jsonify, render_template, make_response
 from hashlib import blake2b
 import configparser
@@ -14,15 +15,6 @@ properties.read('hashes.ini')
 secret_key = bytes(properties.get('Hashes', 'SECRET_KEY'), encoding='utf-8')
 digest_size = int(properties.get('Hashes', 'DIGEST_SIZE'))
 
-def create_deployment():
-    config.load_kube_config()
-
-    with open(path.join(path.dirname(__file__), "deployment.yaml")) as f:
-        dep = yaml.safe_load(f)
-        k8s_apps_v1 = client.AppsV1Api()
-        resp = k8s_apps_v1.create_namespaced_deployment(body=dep, namespace="default")
-        print("Deployment created. status='%s'" % resp.metadata.name)
-      
 def get_user():
     username = request.cookies.get('username')
     auth = request.cookies.get('auth')
@@ -38,12 +30,26 @@ def get_user():
 
 @app.route("/create_notebook", methods=["GET"])
 def create_notebook():
-    user = get_user()
-    # Create a deployment
-    if user:
-        create_deployment()
-        return render_template('index.html', username=user[0], authenticated=True)
-    return render_template('index.html', authenticated=False)
+    account = get_user()
+    if not account:
+        return render_template('index.html', authenticated=False)
+
+    config.load_kube_config()
+
+    dep = yaml.safe_load(open("deployment.yaml"))
+    k8s_apps_v1 = client.AppsV1Api()
+    resp = k8s_apps_v1.create_namespaced_deployment(body=dep, namespace="default")
+
+    service = yaml.safe_load(open("service.yaml"))
+    core_v1 = core_v1_api.CoreV1Api()
+    core_v1.create_namespaced_service(body=service, namespace="default")
+
+    ingress = yaml.safe_load(open("ingress.yaml"))
+    networking_v1_beta1_api = client.NetworkingV1beta1Api()
+    networking_v1_beta1_api.create_namespaced_ingress(body=ingress, namespace="default")
+
+    print("Deployment created. status='%s'" % resp.metadata.name)
+    return render_template('index.html', username=account[0], authenticated=True)
 
 @app.route("/register_view", methods=["GET"])
 def register_view():
