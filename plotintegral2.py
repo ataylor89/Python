@@ -25,4 +25,6 @@ ax.add_patch(poly)
 ax.set_xticks([a, b], labels=['$x$', '$x+h$'])
 ax.set_yticks([func(a), func(b)], labels=['$x^2$', '$(x+h)^2$'])
 
+plt.title('y = x^2')
+
 plt.show()
