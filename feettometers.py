@@ -8,12 +8,14 @@ class FeetToMeters:
         root.title("Feet to Meters")
 
         mainframe = ttk.Frame(root, padding="3 3 12 12")
-        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        # sticky NWES makes the frame stretch horizontally and vertically to fill the cell
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S)) 
         root.columnconfigure(0, weight=1)
         root.rowconfigure(0, weight=1)
        
         self.feet = StringVar()
         feet_entry = ttk.Entry(mainframe, width=7, textvariable=self.feet)
+        # sticky WE makes the entry stretch horizontally to fill the cell, and centers the widget vertically
         feet_entry.grid(column=2, row=1, sticky=(W, E))
         self.meters = StringVar()
 
