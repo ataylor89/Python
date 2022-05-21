@@ -101,6 +101,7 @@ def celsius_to_fahrenheit(celsius):
 def main():
     if len(sys.argv) < 3:
         print("Usage: python %s <latitude> <longitude>" %sys.argv[0])
+        return
     latitude = float(sys.argv[1])
     longitude = float(sys.argv[2])
     weather_report = get_weather_report_for_today(latitude, longitude)
