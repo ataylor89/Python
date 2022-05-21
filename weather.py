@@ -41,6 +41,7 @@ def get_weather_report(latitude, longitude):
     dew_data = resp.json()['properties']['dewpoint']
     relhum_data = resp.json()['properties']['relativeHumidity']
     rain_data = resp.json()['properties']['probabilityOfPrecipitation']
+    weather_data = resp.json()['properties']['weather']
     for reading in temp_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
@@ -71,6 +72,19 @@ def get_weather_report(latitude, longitude):
         update_keys(weather_report, date, time)
         weather_report[date][time]['chance_of_rain']['percent'] = reading['value']
         weather_report[date][time]['chance_of_rain']['period'] = time_data['period']
+    for reading in weather_data['values']:
+        time_data = parse_valid_time(reading['validTime'])
+        date = time_data['date']
+        time = time_data['time']
+        update_keys(weather_report, date, time)
+        weather_report[date][time]['weather']['period'] = time_data['period']
+        for value in reading['value']:
+            description = {
+                'weather': value['weather'],
+                'coverage': value['coverage'],
+                'intensity': value['intensity']
+            }
+            weather_report[date][time]['weather']['description'].append(description)
     return weather_report
 
 def update_keys(weather_report, date, time):
@@ -95,16 +109,20 @@ def update_keys(weather_report, date, time):
             'chance_of_rain': {
                 'percent': None,
                 'period': None
+            },
+            'weather': {
+                'description': [],
+                'period': None
             }
         }
 
 def parse_valid_time(valid_time):
-    dt = valid_time.split("/PT")[0]
+    dt = valid_time.split("/")[0]
     dt = parser.parse(dt).astimezone()
     return {
         'date': dt.strftime("%Y-%m-%d"),
         'time': dt.strftime("%H:%M:%S"),
-        'period': valid_time.split("/PT")[1]
+        'period': valid_time.split("/")[1].replace('P', '').replace('T', '')
     }
 
 def celsius_to_fahrenheit(celsius):
