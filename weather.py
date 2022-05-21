@@ -40,6 +40,7 @@ def get_weather_report(latitude, longitude):
     temp_data = resp.json()['properties']['temperature']
     dew_data = resp.json()['properties']['dewpoint']
     relhum_data = resp.json()['properties']['relativeHumidity']
+    rain_data = resp.json()['properties']['probabilityOfPrecipitation']
     for reading in temp_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
@@ -63,6 +64,13 @@ def get_weather_report(latitude, longitude):
         update_keys(weather_report, date, time)
         weather_report[date][time]['relative_humidity']['percent'] = reading['value']
         weather_report[date][time]['relative_humidity']['period'] = time_data['period']
+    for reading in rain_data['values']:
+        time_data = parse_valid_time(reading['validTime'])
+        date = time_data['date']
+        time = time_data['time']
+        update_keys(weather_report, date, time)
+        weather_report[date][time]['chance_of_rain']['percent'] = reading['value']
+        weather_report[date][time]['chance_of_rain']['period'] = time_data['period']
     return weather_report
 
 def update_keys(weather_report, date, time):
@@ -81,6 +89,10 @@ def update_keys(weather_report, date, time):
                 'period': None
             },
             'relative_humidity': {
+                'percent': None,
+                'period': None
+            },
+            'chance_of_rain': {
                 'percent': None,
                 'period': None
             }
