@@ -42,22 +42,25 @@ def get_weather_report(latitude, longitude):
     relhum_data = resp.json()['properties']['relativeHumidity']
     rain_data = resp.json()['properties']['probabilityOfPrecipitation']
     weather_data = resp.json()['properties']['weather']
+    windchill_data = resp.json()['properties']['windChill']
     for reading in temp_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
         update_keys(weather_report, date, time)
-        weather_report[date][time]['temp']['celsius'] = round(reading['value'], 1)
-        weather_report[date][time]['temp']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
-        weather_report[date][time]['temp']['period'] = time_data['period']
+        if reading['value']:
+            weather_report[date][time]['temp']['celsius'] = round(reading['value'], 1)
+            weather_report[date][time]['temp']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
+            weather_report[date][time]['temp']['period'] = time_data['period']
     for reading in dew_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
         update_keys(weather_report, date, time)
-        weather_report[date][time]['dewpoint']['celsius'] = round(reading['value'], 1)
-        weather_report[date][time]['dewpoint']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
-        weather_report[date][time]['dewpoint']['period'] = time_data['period']
+        if reading['value']:
+            weather_report[date][time]['dewpoint']['celsius'] = round(reading['value'], 1)
+            weather_report[date][time]['dewpoint']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
+            weather_report[date][time]['dewpoint']['period'] = time_data['period']
     for reading in relhum_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
@@ -85,6 +88,15 @@ def get_weather_report(latitude, longitude):
                 'intensity': value['intensity']
             }
             weather_report[date][time]['weather']['description'].append(description)
+    for reading in windchill_data['values']:
+        time_data = parse_valid_time(reading['validTime'])
+        date = time_data['date']
+        time = time_data['time']
+        update_keys(weather_report, date, time)
+        if reading['value']:
+            weather_report[date][time]['wind_chill']['celsius'] = round(reading['value'], 1)
+            weather_report[date][time]['wind_chill']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
+            weather_report[date][time]['wind_chill']['period'] = time_data['period']
     return weather_report
 
 def update_keys(weather_report, date, time):
@@ -112,6 +124,11 @@ def update_keys(weather_report, date, time):
             },
             'weather': {
                 'description': [],
+                'period': None
+            },
+            'wind_chill': {
+                'celsius': None,
+                'fahrenheit': None,
                 'period': None
             }
         }
