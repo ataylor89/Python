@@ -4,6 +4,14 @@ from datetime import datetime
 from dateutil import parser
 import pprint as pp
 
+def get_weather_report_for(latitude, longitude, date):
+    weather_report = {}
+    full_report = get_weather_report(latitude, longitude)
+    weather_report['meta'] = full_report['meta']
+    if date in full_report:
+        weather_report[date] = full_report[date]
+    return weather_report
+
 def get_weather_report(latitude, longitude):
     today = datetime.now().astimezone()
     weather_report = {
@@ -86,7 +94,9 @@ def main():
         print("Usage: python %s <latitude> <longitude>" %sys.argv[0])
     latitude = float(sys.argv[1])
     longitude = float(sys.argv[2])
-    weather_report = get_weather_report(latitude, longitude)
+    today = datetime.now().astimezone()
+    date = today.strftime("%Y-%m-%d")
+    weather_report = get_weather_report_for(latitude, longitude, date)
     pp.pprint(weather_report)
 
 if __name__ == '__main__':
