@@ -43,11 +43,15 @@ def get_weather_report(latitude, longitude):
     rain_data = resp.json()['properties']['probabilityOfPrecipitation']
     weather_data = resp.json()['properties']['weather']
     windchill_data = resp.json()['properties']['windChill']
+    windspeed_data = resp.json()['properties']['windSpeed']
+    windspeed_uom = parse_uom(windspeed_data['uom'])
+    winddirection_data = resp.json()['properties']['windDirection']
+    winddirection_uom = parse_uom(winddirection_data['uom'])
     for reading in temp_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         if reading['value']:
             weather_report[date][time]['temp']['celsius'] = round(reading['value'], 1)
             weather_report[date][time]['temp']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
@@ -56,7 +60,7 @@ def get_weather_report(latitude, longitude):
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         if reading['value']:
             weather_report[date][time]['dewpoint']['celsius'] = round(reading['value'], 1)
             weather_report[date][time]['dewpoint']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
@@ -65,21 +69,21 @@ def get_weather_report(latitude, longitude):
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         weather_report[date][time]['relative_humidity']['percent'] = reading['value']
         weather_report[date][time]['relative_humidity']['period'] = time_data['period']
     for reading in rain_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         weather_report[date][time]['chance_of_rain']['percent'] = reading['value']
         weather_report[date][time]['chance_of_rain']['period'] = time_data['period']
     for reading in weather_data['values']:
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         weather_report[date][time]['weather']['period'] = time_data['period']
         for value in reading['value']:
             description = {
@@ -92,14 +96,32 @@ def get_weather_report(latitude, longitude):
         time_data = parse_valid_time(reading['validTime'])
         date = time_data['date']
         time = time_data['time']
-        update_keys(weather_report, date, time)
+        prepare_entry(weather_report, date, time)
         if reading['value']:
             weather_report[date][time]['wind_chill']['celsius'] = round(reading['value'], 1)
             weather_report[date][time]['wind_chill']['fahrenheit'] = celsius_to_fahrenheit(reading['value'])
             weather_report[date][time]['wind_chill']['period'] = time_data['period']
+    for reading in windspeed_data['values']:
+        time_data = parse_valid_time(reading['validTime'])
+        date = time_data['date']
+        time = time_data['time']
+        prepare_entry(weather_report, date, time)
+        if reading['value']:
+            weather_report[date][time]['wind_speed']['uom'] = windspeed_uom
+            weather_report[date][time]['wind_speed']['speed'] = round(reading['value'], 3)
+            weather_report[date][time]['wind_speed']['period'] = time_data['period']
+    for reading in winddirection_data['values']:
+        time_data = parse_valid_time(reading['validTime'])
+        date = time_data['date']
+        time = time_data['time']
+        prepare_entry(weather_report, date, time)
+        if reading['value']:
+            weather_report[date][time]['wind_direction']['uom'] = winddirection_uom
+            weather_report[date][time]['wind_direction']['angle'] = reading['value']
+            weather_report[date][time]['wind_direction']['period'] = time_data['period']
     return weather_report
 
-def update_keys(weather_report, date, time):
+def prepare_entry(weather_report, date, time):
     if date not in weather_report:
         weather_report[date] = {}
     if time not in weather_report[date]:
@@ -130,6 +152,16 @@ def update_keys(weather_report, date, time):
                 'celsius': None,
                 'fahrenheit': None,
                 'period': None
+            },
+            'wind_speed': {
+                'uom': None,
+                'speed': None,
+                'period': None
+            },
+            'wind_direction': {
+                'uom': None,
+                'angle': None,
+                'period': None
             }
         }
 
@@ -144,6 +176,13 @@ def parse_valid_time(valid_time):
 
 def celsius_to_fahrenheit(celsius):
     return celsius * 1.8 + 32
+
+def parse_uom(uom):
+    if uom == 'wmoUnit:km_h-1':
+        return 'km/h'
+    if uom == 'wmoUnit:degree_(angle)':
+        return 'degrees'
+    return None
 
 def main():
     if len(sys.argv) < 3:
