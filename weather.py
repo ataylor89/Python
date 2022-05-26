@@ -37,6 +37,7 @@ def get_weather_report(latitude, longitude):
     url = resp.json()['properties']['forecastGridData']
     resp = requests.get(url)
     # Reorganize the data into a JSON of our liking
+    # Another way of saying this is that we're restructuring the data
     temp_data = resp.json()['properties']['temperature']
     dew_data = resp.json()['properties']['dewpoint']
     relhum_data = resp.json()['properties']['relativeHumidity']
