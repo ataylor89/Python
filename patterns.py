@@ -9,7 +9,7 @@
 import re
 
 # The re.compile method gives us a pattern object. The pattern object has a method called match
-pattern = re.compile(r'How [a-zA-Z]+ly .+!')
+pattern = re.compile(r'How [a-zA-Z]+ly .*!')
 
 strings = [
     "How lovely the sky is!", 
