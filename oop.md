@@ -44,7 +44,7 @@ Thus a boolean belongs to the class boolean. The value True or False belongs to 
 
 Thus an integer belongs to the class integer. The value 10 or 20 belongs to the class int.
 
-Thus a string belongs to the class string. The character sequence "hello world" belongs to the class string.
+Thus a string belongs to the class string. The character sequence "hello world" belongs to the class str.
 
 Thus a dictionary belongs to the class dictionary. There are many brands of English dictionaries sold in bookstores,
 and all of these brands of dictionaries belong to the class dictionary.
