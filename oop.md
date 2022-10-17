@@ -20,7 +20,7 @@ What idea does object oriented programming refer to?
 
 # Defining the phrase "object oriented programming"
 
-We can start with the definition of an object? What is an object?
+We can start with the definition of an object. What is an object?
 
 An object is exactly what we know it to be. An object is a person place or thing.
 
