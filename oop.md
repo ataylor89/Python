@@ -578,4 +578,26 @@ Thus, an analogy that is used in the field of mathematics (thinking of everythin
 
 This approach to mathematics is more than an analogy with the physical universe. It is actually a way of thinking about the universe. We see immediately how everything in the universe is an object. (Planets are objects. Stars are objects. Animals are objects. Nature is filled with objects. Atoms are objects, with protons, neutrons, electrons, and other particles.) We make the logical step of saying that numbers, sets, and functions are also objects. Just as we can group objects in the universe by a class that is common to each object (we can group tables and chairs according to their class) we can group mathematical objects according to their class (we can group 1 and 2 as integers and we can group pi and phi as irrational numbers).
 
+The English language is filled with words that classify objects (give objects many classes).
+
+A laptop is a class of computer and a desktop is a class of computer. A planet is a class of objects and a star is a class of objects.
+
+Many scientists have said, "These two objects are both planets. What do they have in common?" 
+
+Many scientists have answered, "The planets in our solar system all have a strong gravitational force."
+
+Many scientists have said, "These two objects are both stars. What do they have in common?"
+
+Many scientists have answered, "These stars all have a strong gravitational force, and they emit a lot of light."
+
+Many mathematicians have asked, "What do the integers have in common?"
+
+Many mathematicians have answered, "They are closed under addition."
+
 One can argue that Python is one of the most object oriented programming languages, because in Python, everything is an object.
+
+We can think of the universe as objects that interact. It is one way of thinking about the universe. This way of thinking about the universe has origins in mathematics and engineering. 
+
+There are many ways of thinking about the universe. There is more than one way of thinking about the universe. But I think that the use of "object oriented programming" in the field of computer science has origins in the fields of mathematics and engineering. The word "object" has been used in mathematics and engineering for thousands of years. Mathematicians and engineers have thought about the universe in terms of objects for thousands of years.
+
+To prove our claim, we can find this way of thinking about the universe (as objects that have a class) in the research of many mathematicians, including Terence Tao. The phrase "mathematical object" is common in mathematics, and is often found in mathematical books and mathematical literature. It is easy to see how this mathematical theory was adopted by computer science and used in the design of programs and programming languages.
