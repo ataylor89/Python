@@ -257,7 +257,7 @@ Without classes and objects, there is a risk of there being two namespaces, and 
 
 With classes and objects, we can create many namespaces for code and data.
 
-That's because every object has its own namespace. Every object has its own symbol table.
+This is because every object has its own namespace. Every object has its own symbol table.
 
 It is easy to go on and on about this subject, because there is so much to write and think about.
 
