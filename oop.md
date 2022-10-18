@@ -150,7 +150,7 @@ We can also create our own functions and variables.
     >>> x
     6
 
-In the example above, we created a function called inc using the def keyword, and we assigned the variable x to the object returned by the function.
+In code above, we created a function called inc using the def keyword, and we assigned the variable x to the object returned by the function.
 
 The function inc belongs to class function. 
 
