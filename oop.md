@@ -177,7 +177,7 @@ Now let's create a class. We can create a class using the class keyword.
 
 We have created a new class of data object called Person. 
 
-We have used this data type to create a data object containing information about Moses.
+We used this data type to create a data object containing information about Moses.
 
 So you see how we can easily create a new kind of data structure by creating a new class of objects.
 
