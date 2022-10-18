@@ -183,20 +183,97 @@ So you see how we can easily create a new data structure by creating a new class
 
 In this example we created a data structure for storing information about a person.
 
-# How do we store classes and objects in memory?
+# How do we store data objects in memory?
 
-Since objects are dynamically allocated, we store object data on the heap.
+Since objects are dynamically allocated, we often store object data on the heap.
+
+It is also a good strategy to store object data on a stack, which we see done in C and assembly.
+
+When we store memory on the stack, it's also dynamic. 
+
+What's the difference between storing data on the stack and storing data on the heap?
+
+The difference is the algorithm for memory allocation. 
+
+When we store data on the stack, we use a different algorithm for memory allocation.
+
+When we store data on the stack, we don't have to bother looking for unused portions of memory.
+
+It takes time to scan the heap and find unused portions of memory.
+
+(It's hard to predict when memory on the heap will be allocated and released.)
+
+When we store data on the stack, we just push an object onto the stack, and it takes no time at all.
+
+Thus storing data on the stack can save time. But we also have to remember the order of every variable on the stack.
+
+If we store the numbers 5, 10, and 15 on the stack, we have to remember the order of the stack in order to retrieve each of the three variables.
+
+    push 5
+    push 10
+    push 15
+    pop eax 
+    pop ebx
+    pop ecx
+
+In the example above, we have to remember the order of the stack. 
+
+In the example above, eax = 15, ebx = 10, and ecx = 5.
+
+Storing data on the stack saves time, but we have to remember the order of the stack.
+
+These are some reasons why dynamic memory allocation uses both a stack and a heap for data storage and retrieval.
+
+The stack and the heap are simply two different algorithms for memory allocation.
+
+As we have pointed out, data is often allocated dynamically, because it's hard to predict what the data will be at compiletime.
+
+But some data gets allocated statically (once and only once). 
 
 Since classes are static (they can only be defined once) the code in a class only gets loaded into memory once.
 
-We can actually inspect Python objects and see what they look like in memory.
+What happens when a function gets replaced? For example
+
+    def f(n):
+        return n+1
+
+    def clock(f):
+        def inner(*args, **kwargs):
+            start = time.time()
+            ret_value = f(*args, **kwargs)
+            end = time.time()
+            print("Function %s took %f seconds" %(f.__name__, end-time))
+            return ret_value
+        return inner
+    
+    f = clock(f)
+
+We see here an example of a function being replaced.
+
+We are adding a benchmark to function f to measure how much time it takes.
+
+Can we allocate function f statically? We can. But what if we do not know, at compiletime, whether function f will be replaced?
+
+This is one reason why it's good to be flexible about memory allocation.
+
+The code inside a function can often be allocated in the static code segment of virtual memory. But it can also be alocated on the heap in cases like this where the code of a function can be replaced at runtime.
+
+What we're getting at is this:
+
+The stack and the heap are two algorithms for memory allocation.
+
+But in this vast cosmos of planets and stars and galaxies... there are more than two algorithms for memory allocation.
+
+In many programming languages (like C and Python) we can inspect objects and see what they look like in memory.
+
+Here is one way of doing this in Python. We will see how our data object Mosheh is stored.
 
     >>> import ctypes
     >>> import sys
     >>> ctypes.string_at(id(Mosheh), sys.getsizeof(Mosheh))
     b'\x01\x00\x00\x00\x00\x00\x00\x00(\xd8\xda\x12\xee\x7f\x00\x000\xef\x07h\xee\x7f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00p\x8f\xc4\n\x01\x00\x00\x00\x07\x00\x00\x00\x00\x00\x00\x00'
 
-Let's do this again with a string and an int.
+Now let's see how a string and an integer are stored.
 
     >>> import ctypes
     >>> import sys
@@ -210,6 +287,52 @@ Let's do this again with a string and an int.
 We can see that the string "Hello world!" is stored at the very end of the byte array.
 
 We can also see that the integer value 5 is stored in the last four bytes of the byte array.
+
+To review this subject of static and dynamic memory allocation, it's important to make one point clear.
+
+When we define a function, we create variables. And there's a lot we do not know at compiletime.
+
+We do not know if the function will even be called. We do not know what data the variables will hold. And we even do not know the size of the data referred to by each variable. (For example, will a string be five characters or five hundred?)
+
+When a function defines a data object, the data object often gets allocated dynamically, on the stack or the heap.
+
+The word dynamic means that it does not happen at the beginning, but it happens over time.
+
+It also means that it does not happen once and only once, it happens a variable number of times.
+
+A lot of data can be allocated statically (at the very beginning, when the program is loaded into memory.)
+
+A lot of data has to be allocated dynamically (during the runtime of the program).
+
+There are strategies and algorithms for allocating a program's memory. 
+
+Sometimes memory gets allocated at the beginning (statically) and sometimes memory gets allocated over time (dynamically).
+
+Python is dynamically typed, and it gives a programmer the ability to replace and redefine functions at runtime.
+
+Thus in Python it is common to allocate memory dynamically.
+
+It is the responsibility of the compiler or interpreter to be efficient with memory requests and memory allocation.
+
+The compiler or interpreter can use many algorithms for memory requests and memory allocation.
+
+The concepts of static memory allocation, dynamic memory allocation, stack memory allocation, and heap memory allocation are really just four algorithms for allocating memory.
+
+We can always refer to mathematics when we talk about concepts in computer science.
+
+In mathematics we have the concepts of a constant and a variable.
+
+Data that is constant can be allocated statically (at the beginning).
+
+Data that is variable can sometimes be allocated statically (if it has a fixed size).
+
+But when data has a variable size, it is often allocated dynamically.
+
+When we are sure we need a data object, we can often allocate the data statically. (It is constant in the sense that we constantly need it at runtime.)
+
+But when we are not sure we need a data object, we often allocate the data dynamically. (It is variable in the sense that we may or may not need it at runtime.)
+
+The computer science terms static and dynamic have a lot in common with the mathematical terms constant and variable.
 
 # Conclusion
 
@@ -285,3 +408,7 @@ You can see how easy it is to go on and on about this subject.
 The basic premise of object-oriented programming is that everything is an object and every object has a class.
 
 This understanding of object-oriented programming makes an analogy with the physical universe.
+
+We can use this thinking to create a formal definition for object oriented programming.
+
+Object oriented programming is a paradigm that says, everything is an object, and all objects have a class.
