@@ -105,13 +105,13 @@ because we can add new features by defining a new class of object.
 
 A Python module is in fact an object. We can verify this by opening up the interactive Python environment.
 
-% python
->>> type(math)
-<class 'module'>
->>> type(math.pi)
-<class 'float'>
->>> type(math.factorial)
-<class 'builtin_function_or_method'>
+    % python
+    >>> type(math)
+    <class 'module'>
+    >>> type(math.pi)
+    <class 'float'>
+    >>> type(math.factorial)
+    <class 'builtin_function_or_method'>
 
 We can see from the above example how everything in Python is an object. 
 
@@ -125,30 +125,30 @@ In Python we can use built-in classes, and we can create our own classes.
 
 Let's give some examples.
 
-% python
->>> import math
->>> type(math.factorial)
-<class 'builtin_function_or_method'>
->>> math.factorial(5)
-120
->>> type(math.pi)
-<class 'float'>
->>> math.pi
-3.141592653589793
+    % python
+    >>> import math
+    >>> type(math.factorial)
+    <class 'builtin_function_or_method'>
+    >>> math.factorial(5)
+    120
+    >>> type(math.pi)
+    <class 'float'>
+    >>> math.pi
+    3.141592653589793
 
 In the examples above, we use some built-in functions and variables: the factorial function and the variable pi.
 
 We can also create our own functions and variables.
 
-% python
->>> def inc(n):
-...     return n+1
-... 
->>> type(inc)
-<class 'function'>
->>> x = inc(5)
->>> x
-6
+    % python
+    >>> def inc(n):
+    ...     return n+1
+    ... 
+    >>> type(inc)
+    <class 'function'>
+    >>> x = inc(5)
+    >>> x
+    6
 
 In the example above, we created a function called inc using the def keyword, and we assigned the variable x to the object returned by the function.
 
@@ -156,24 +156,24 @@ The function inc belongs to class function.
 
 Now let's create a class. We can create a class using the class keyword.
 
-% python
->>> class Person:
-...     def __init__(self, name, age, occupation, nationality):
-...             self.name = name
-...             self.age = age
-...             self.occupation = occupation
-...             self.nationality = nationality
-...     def __str__(self):
-...             return "Name: %s\nAge: %s\nOccupation: %s\nNationality: %s" %(self.name, self.age, self.occupation, self.nationality)
-... 
->>> Mosheh = Person("Mosheh", 50, "Rabbi", "Israel")
->>> print(Mosheh)
-Name: Mosheh
-Age: 50
-Occupation: Rabbi
-Nationality: Israel
->>> type(Mosheh)
-<class '__main__.Person'>
+    % python
+    >>> class Person:
+    ...     def __init__(self, name, age, occupation, nationality):
+    ...             self.name = name
+    ...             self.age = age
+    ...             self.occupation = occupation
+    ...             self.nationality = nationality
+    ...     def __str__(self):
+    ...             return "Name: %s\nAge: %s\nOccupation: %s\nNationality: %s" %(self.name, self.age, self.occupation, self.nationality)
+    ... 
+    >>> Mosheh = Person("Mosheh", 50, "Rabbi", "Israel")
+    >>> print(Mosheh)
+    Name: Mosheh
+    Age: 50
+    Occupation: Rabbi
+    Nationality: Israel
+    >>> type(Mosheh)
+    <class '__main__.Person'>
 
 We have created a new class of data object called Person. 
 
@@ -191,21 +191,21 @@ Since classes are static (they can only be defined once) the code in a class onl
 
 We can actually inspect Python objects and see what they look like in memory.
 
->>> import ctypes
->>> import sys
->>> ctypes.string_at(id(Mosheh), sys.getsizeof(Mosheh))
-b'\x01\x00\x00\x00\x00\x00\x00\x00(\xd8\xda\x12\xee\x7f\x00\x000\xef\x07h\xee\x7f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00p\x8f\xc4\n\x01\x00\x00\x00\x07\x00\x00\x00\x00\x00\x00\x00'
+    >>> import ctypes
+    >>> import sys
+    >>> ctypes.string_at(id(Mosheh), sys.getsizeof(Mosheh))
+    b'\x01\x00\x00\x00\x00\x00\x00\x00(\xd8\xda\x12\xee\x7f\x00\x000\xef\x07h\xee\x7f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00p\x8f\xc4\n\x01\x00\x00\x00\x07\x00\x00\x00\x00\x00\x00\x00'
 
 Let's do this again with a string and an int.
 
->>> import ctypes
->>> import sys
->>> s = "Hello world!"
->>> n = 5
->>> ctypes.string_at(id(s), sys.getsizeof(s))
-b'\x01\x00\x00\x00\x00\x00\x00\x00p\x8f\xc4\n\x01\x00\x00\x00\x0c\x00\x00\x00\x00\x00\x00\x00\xd8\xbf~\xc8^\xecvM\xe4x\x04h\xee\x7f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Hello world!\x00'
->>> ctypes.string_at(id(n), sys.getsizeof(n))
-b'\x0f\x02\x00\x00\x00\x00\x00\x00\xa0\xcc\xc3\n\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00'
+    >>> import ctypes
+    >>> import sys
+    >>> s = "Hello world!"
+    >>> n = 5
+    >>> ctypes.string_at(id(s), sys.getsizeof(s))
+    b'\x01\x00\x00\x00\x00\x00\x00\x00p\x8f\xc4\n\x01\x00\x00\x00\x0c\x00\x00\x00\x00\x00\x00\x00\xd8\xbf~\xc8^\xecvM\xe4x\x04h\xee\x7f\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00Hello world!\x00'
+    >>> ctypes.string_at(id(n), sys.getsizeof(n))
+    b'\x0f\x02\x00\x00\x00\x00\x00\x00\xa0\xcc\xc3\n\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x05\x00\x00\x00'
 
 We can see that the string "Hello world!" is stored at the very end of the byte array.
 
