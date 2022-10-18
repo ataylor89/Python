@@ -152,7 +152,7 @@ We can also create our own functions and variables.
 
 In code above, we created a function called inc using the def keyword, and we assigned the variable x to the object returned by the function.
 
-The function inc belongs to class function. 
+The object inc belongs to class function. 
 
 Now let's create a class. We can create a class using the class keyword.
 
