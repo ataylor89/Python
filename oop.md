@@ -91,7 +91,7 @@ We are using a definition of the word object that harmonizes with its usage in t
 
 Object oriented programming does not slow a program down or cause it to use too much memory.
 
-The efficiency of a proram is connected to the efficiency of the source code and the efficiency of the compiler or interpreter.
+The efficiency of a program is connected to the efficiency of the source code and the efficiency of the compiler or interpreter.
 
 The efficiency of a program is not connected to object oriented programming.
 
