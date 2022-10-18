@@ -370,6 +370,8 @@ The compiler or interpreter that translates Python into bytecode or machine code
 
 This is because a compiler or interpreter translates source code into a low-level language that allows it to make these decisions.
 
+(Now is this low-level language the language of the processor or the operating system? It's often a mix. On MacOS a binary file has headers and other values that have nothing to do with the processor.)
+
 We see that there are many ways of organizing memory, and there are many ways of organizing virtual memory. 
 
 The familiar algorithms of static memory allocation, dynamic memory allocation, stacks, heaps, and shared libraries are algorithms used by compilers and interpreters and operating systems.
