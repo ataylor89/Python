@@ -342,6 +342,38 @@ Dynamic memory refers to memory blocks that change over time. The memory blocks 
 
 Static memory refers to memory blocks that are constant in some way, and dynamic memory refers to memory blocks that are not constant, because theoretically they could be used or unused, and theoretically they could hold any class of data object.
 
+This vocabulary for memory allocation probably comes from the C programming language. The C programming language has been very successful and its vocabulary has been widely adopted. 
+
+We can use the concepts of static and dynamic memory to talk about memory allocation. We can use the concepts of a stack and a heap to talk about memory allocation.
+
+But it's important to keep in mind what is really happening. 
+
+A program gives instructions to a procesor.
+
+A program tells a processor to load code and data into memory, so that it can be used when it is needed.
+
+A program stores the addresses of functions and data objects in a symbol table.
+
+A program can organize memory however it wants.
+
+That's what the operating system does... it organizes memory however it wants.
+
+These concepts of static memory, dynamic memory, stacks and heaps are only one way of organizing memory.
+
+When we talk about static memory allocation, dynamic memory allocation, stacks and heaps, we are often using the vocabulary of an operating system, a compiler, or an interpreter.
+
+The operating system is able to modify the memory at any address.
+
+A program is given virtual memory so that it does not modify the memory of other programs.
+
+The compiler or interpreter that translates Python into bytecode or machine code makes decisions about how to organize the virtual memory it is given.
+
+There are many ways of organizing memory. There are many ways of organizing virtual memory. 
+
+The familiar algorithms of static memory allocation, dynamic memory allocation, stacks, heaps, and shared libraries are algorithms used by compilers and interpreters and operating systems.
+
+These algorithms do a good job of organizing virtual memory. But there are other strategies and algorithms for organizing virtual memory. We see how C and Python take different approaches to memory allocation. C might make more use of stack memory allocation, and Python might make more use of heap memory allocation.
+
 # Conclusion
 
 Object-oriented programming is a phrase that is often used. But what does it mean?
