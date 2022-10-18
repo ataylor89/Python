@@ -334,6 +334,14 @@ But when we are not sure we need a data object, we often allocate the data dynam
 
 The computer science terms static and dynamic have a lot in common with the mathematical terms constant and variable.
 
+Is helpful to give a formal definition of static memory and dynamic memory.
+
+Static memory refers to memory blocks that are constant in some way. Either the data does not change, or the size of the data does not change (like the integer five, or a 32-bit integer of any value.)
+
+Dynamic memory refers to memory blocks that change over time. The memory blocks can be claimed and marked as used. The memory blocks can be freed and marked as unused. The memory blocks can store any class of data object.
+
+Static memory refers to memory blocks that are constant in some way, and dynamic memory refers to memory blocks that are not constant, because theoretically they could be used or unused, and theoretically they could hold any class of data object.
+
 # Conclusion
 
 Object-oriented programming is a phrase that is often used. But what does it mean?
