@@ -227,7 +227,7 @@ In computer science, everything is an object. A module is an object, a function 
 
 Every object has a class. 
 
-In mathematics, a number belongs to a class number, a set belongs to class set, and a function belongs to class function.
+In mathematics, a number belongs to class number, a set belongs to class set, and a function belongs to class function.
 
 In Python, a module belongs to class module, a function belongs to class function, an integer belongs to class int, a string belongs to class str, a boolean belongs to class bool, a dictionary belongs to class dict, and a list belongs to class list.
 
