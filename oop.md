@@ -262,3 +262,26 @@ This is because every object has its own namespace. Every object has its own sym
 It is easy to go on and on about this subject, because there is so much to write and think about.
 
 The basic premise of object-oriented programming is that everything is an object, and every object has a class.
+
+When we run the Python interpreter, we create an environment (the Python environment) and we fill it with objects,
+like functions, modules, numbers, strings, dictionaries, lists, and so on.
+
+We create a space (the Python runtime environment) and we fill it with objects.
+
+You can see how we have drawn from the physical universe to create an analogy.
+
+When we start the Python runtime environment, we have a space filled with objects. Some objects are already built-in (like the print function and the type function), and some objects we have yet to create.
+
+This is object oriented programming. 
+
+Objects in mathematics and computer science are analogous to objects in the physical universe.
+
+The objects exist in a space. The objects have state and behavior.
+
+When we start the Python runtime environment, we create a space and we fill it with objects. 
+
+You can see how easy it is to go on and on about this subject.
+
+The basic premise of object-oriented programming is that everything is an object and every object has a class.
+
+This understanding of object-oriented programming makes an analogy with the physical universe.
