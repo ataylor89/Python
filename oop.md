@@ -456,3 +456,112 @@ This understanding of object-oriented programming makes an analogy with the phys
 We can use this thinking to create a formal definition for object oriented programming.
 
 Object oriented programming is a paradigm that says, everything is an object, and all objects have a class.
+
+Is object oriented programming the only approach to programming? It's not the only approach.
+
+Is object oriented programming the only programming paradigm? It's not the only programming paradigm.
+
+There are many approaches to programming, and there are many programming paradigms.
+
+When we think about what's happening behind the scenes, it makes a lot more sense.
+
+We are giving instructions to a processor. And it's really that simple.
+
+We are giving instructions to a processor and we are working with code and data in memory.
+
+How do we think about the code and data that is stored in memory?
+
+We can think about the code and data in memory as objects.
+
+We can abstract what's happening at the hardware level (a processor running instructions)
+and create a space of objects where each object has behavior and state, or in other words, code and data.
+
+Thus object-oriented programming is an abstraction that is used in many programming languages.
+
+Object oriented programming is an abstraction that is used in the C++, C#, Java, and Python programming languages.
+
+In C++, C#, and Java, code and data are sometimes (or often) thought of as objects.
+
+In Python, code and data are almost always (or always) thought of as objects.
+
+Let's look at this example.
+
+% python
+>>> def f(n):
+...     ''' the factorial function '''
+...     if n == 1:
+...             return 1
+...     return n * f(n-1)
+... 
+>>> f(5)
+120
+>>> f.__name__
+'f'
+>>> f.__doc__
+' the factorial function '
+
+We see how f is an object of class function.
+
+This object has code (the code for the factorial function). It also has a doctsring in triple quotes. It also has a name (that is, f).
+
+The object f is an object of class function, and it has code and data.
+
+We see how object-oriented programming is used in Python. In Python, everything is an object.
+
+We see how object-oriented programming is an abstraction of what is happening at the hardware level (a processor reading instructions from memory at a location specified by an instruction pointer.)
+
+Just as we can refer to mathematics to make sense of a concept in computer science, we can also refer to engineering.
+
+Object-oriented programming is a phrase that is used in the C++, C#, Java, and Python languages.
+
+These languages have slightly different definitions of this phrase.
+
+These languages have slightly different understandings of this paradigm.
+
+Object-oriented programming is a design pattern in software engineering.
+
+It is a design pattern that can be used in software engineering to simplify a task or make sense of a programming language.
+
+Object-oriented programming is a design pattern that can be used to design a program in C++, C#, Java, and Python.
+
+We can see how (and how often) each of these languages use the design pattern.
+
+Design pattern is a helpful phrase in engineering. 
+
+Object-oriented programming is a design pattern that can be used to design a program, and also a programming language.
+
+The OOP design pattern was used to design the programming language.
+
+When we investigate how Python works, we see that everything in Python is an object.
+
+We have given object oriented programming (OOP) a formal definition.
+
+    Object oriented programming: A paradigm in which everything is an object, and every object has a class.
+
+We arrived at this formal definition of object oriented programming by drawing from the field of mathematics (specifically, the mathematical understanding of objects).
+
+We can now draw from the field of engineering and give this idea an application.
+
+Python is an application of object oriented programming.
+
+Python was designed to be object oriented (everything in Python is an object).
+
+We find applications of OOP in C++, C#, Java, and Python.
+
+Thus we have arrived at a new question.
+
+The first question we asked is, "What is the definition of object oriented programming?"
+
+The new quesiton we have arrived at is, "What are the applications of object oriented programming?"
+
+There are many applications of object oriented programming. 
+
+The Python programming language itself is an application of object oriented programming, since everything in Python is an object.
+
+The Java programming language is an application of object oriented programming.
+
+The C++ and C# programming languages are applications of object oriented programming.
+
+This essay has to do with the definition of object oriented programming, but it's also important to point out some of its applications.
+
+We find applications of object oriented programming in C++, C#, Java, Python, and many other programming languages, both in the languages themselves and in the software that is written using these languages.
