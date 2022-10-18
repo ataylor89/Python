@@ -46,8 +46,8 @@ Thus an integer belongs to the class integer. The value 10 or 20 belongs to the 
 
 Thus a string belongs to the class string. The character sequence "hello world" belongs to the class str.
 
-Thus a dictionary belongs to the class dictionary. There are many brands of English dictionaries sold in bookstores,
-and all of these brands of dictionaries belong to the class dictionary.
+Thus a dictionary belongs to the class dictionary. (There are many brands of English dictionaries sold in bookstores,
+and all of these brands of dictionaries belong to the class dictionary.)
 
 In Python, a dictionary belongs to class dict.
 
