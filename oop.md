@@ -368,7 +368,9 @@ A program is given virtual memory so that it does not modify the memory of other
 
 The compiler or interpreter that translates Python into bytecode or machine code makes decisions about how to organize the virtual memory it is given.
 
-There are many ways of organizing memory. There are many ways of organizing virtual memory. 
+This is because a compiler or interpreter translates source code into a low-level language that allows it to make these decisions.
+
+We see that here are many ways of organizing memory, and there are many ways of organizing virtual memory. 
 
 The familiar algorithms of static memory allocation, dynamic memory allocation, stacks, heaps, and shared libraries are algorithms used by compilers and interpreters and operating systems.
 
