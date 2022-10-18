@@ -565,3 +565,15 @@ The C++ and C# programming languages are applications of object oriented program
 This essay has to do with the definition of object oriented programming, but it's also important to point out some of its applications.
 
 We find applications of object oriented programming in C++, C#, Java, Python, and many other programming languages, both in the languages themselves and in the software that is written using these languages.
+
+It is also helpful to ask, what are the origins of the phrase "object oriented programming"?
+
+I think the phrase "object oriented programming" originates in mathematics. Many mathematicians, including Terence Tao, have used an approach in mathematics where numbers, sets, and functions are all thought of as mathematical objects.
+
+This analogy with the physical universe (where everything is an object) has been used in mathematics over and over again throughout history.
+
+Gauss may have used this analogy in the field of mathematics.
+
+Thus, an analogy that is used in the field of mathematics (thinking of everything as an object with state and behavior) came to be used in the field of computer science.
+
+One can argue that Python is one of the most object oriented programming languages, because in Python, everything is an object.
