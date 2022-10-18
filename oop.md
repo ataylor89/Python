@@ -552,7 +552,7 @@ Thus we have arrived at a new question.
 
 The first question we asked is, "What is the definition of object oriented programming?"
 
-The new quesiton we have arrived at is, "What are the applications of object oriented programming?"
+The new question we ask is, "What are the applications of object oriented programming?"
 
 There are many applications of object oriented programming. 
 
