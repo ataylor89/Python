@@ -179,7 +179,7 @@ We have created a new class of data object called Person.
 
 We used this data type to create a data object containing information about Moses.
 
-So you see how we can easily create a new kind of data structure by creating a new class of objects.
+So you see how we can easily create a new data structure by creating a new class of objects.
 
 In this example we created a data structure for storing information about a person.
 
